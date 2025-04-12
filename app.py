@@ -23,7 +23,9 @@ def get_verses():
 def get_random_verse():
     with open('verses.json', encoding='utf-8') as f:
         data = json.load(f)
-    return jsonify(random.choice(data))
+    verse = random.choice(data)
+    return Response(json.dumps(verse, ensure_ascii=False, indent=2), mimetype='application/json')
+
 
 # 그룹된 말씀 전체
 @app.route('/api/grouped')
