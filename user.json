@@ -1,0 +1,9 @@
+{
+    "users": [
+      {
+        "email": "test@example.com",
+        "api_key": "my-secret-key"
+      }
+    ]
+  }
+  
