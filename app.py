@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, request
 import json
 import random
 import os
@@ -28,16 +28,17 @@ def get_random_verse():
 # 그룹된 말씀 전체
 @app.route('/api/grouped')
 def get_grouped():
-    return jsonify(grouped_data)
+    return Response(json.dumps(grouped_data, ensure_ascii=False, indent=2), mimetype='application/json')
+
 
 # 특정 책만 보여주는 API
 @app.route('/api/grouped/<book_name>')
 def get_grouped_by_book(book_name):
     book = grouped_data.get(book_name)
     if book:
-        return jsonify(book)
+        return Response(json.dumps(book, ensure_ascii=False, indent=2), mimetype='application/json')
     else:
-        return jsonify({"error": "해당 구절이 없습니다"}), 404
+        return Response(json.dumps({"error": "해당 구절이 없습니다"}, ensure_ascii=False), mimetype='application/json', status=404)
 
 # 홈
 @app.route('/')
