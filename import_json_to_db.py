@@ -4,15 +4,15 @@ import pymysql
 # 1. DB 연결 설정
 conn = pymysql.connect(
     host='localhost',
-    user='your_username',     # 예: 'root'
-    password='your_password', # 예: '1234'
-    db='bible_app',           # 사용 중인 DB 이름
+    user='root',    
+    password='Mysql4344!',
+    db='bible_api',           # 사용 중인 DB 이름
     charset='utf8mb4'
 )
 cursor = conn.cursor()
 
 # 2. JSON 파일 열기
-with open('structured_verses.json', 'r', encoding='utf-8') as f:
+with open('grouped_verses.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # 3. JSON 구조 순회하며 INSERT
